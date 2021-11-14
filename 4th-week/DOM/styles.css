@@ -1,0 +1,39 @@
+/* Hex 
+#1446A0 Cobalt Blue
+#DB3069 Razzmataz
+#f5d547 Mustard
+#EBEBD3 Beige
+#3C3C3B Jet
+*/
+
+body {
+  background-color: #3C3C3B;
+  color: #1446A0;
+  text-align: center;display: flex;
+  height: 100vh;
+}
+
+.card {
+  width: 500px;
+  margin: auto;
+  background-color: #f5d547;
+  padding: 25px;
+  border-radius: 25px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  border-radius: 8px;
+  margin: auto 0;
+  height: 25px;
+  width: 350px;
+}
+
+p {
+  margin-left: 15px;
+  font-size: 35px
+}
