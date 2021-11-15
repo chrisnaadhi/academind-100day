@@ -1,0 +1,16 @@
+#carouselExampleIndicators {
+    width: 100%;
+    /* max-width: 50rem; */
+    height: 30rem;
+    margin: 0 auto;
+}
+
+#carouselExampleIndicators img {
+    height: 30rem;
+    object-fit: cover;
+}
+
+#newsletter-signup {
+    max-width: 30rem;
+    margin: 3rem auto;
+}
