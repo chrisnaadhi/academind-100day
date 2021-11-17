@@ -12,5 +12,12 @@
     "cuisine": "javanese",
     "website": "https://youtube.com",
     "description": "Nice one there"
+  },
+  {
+    "name": "Umami Deshita",
+    "address": "Japanese",
+    "cuisine": "Japanese Cuisines",
+    "website": "https://umami.jp",
+    "description": "Nice one"
   }
 ]
