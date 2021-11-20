@@ -1,13 +1,15 @@
+// Split route for Restaurant things
+
 const uuid = require("uuid");
 const resData = require("../util/restaurant-data");
 const express = require("express");
-const e = require("express");
 const router = express.Router();
 
 router.get("/restaurants", (req, res) => {
+  // Ordering the Restaurant Name with Query Route
   let order = req.query.order;
   let nextOrder = 'desc'
-  
+
   if (order !== 'asc' && order !== 'desc') {
     order = 'asc';
   }
@@ -39,6 +41,7 @@ router.get("/restaurants/:id", (req, res) => {
   const restaurantId = req.params.id;
   const storedRestaurant = resData.getStoredRes();
 
+  // Loop through JSON file for search it's content based on ID
   for (const restaurant of storedRestaurant) {
     if (restaurant.id === restaurantId) {
       return res.render("restaurant-details", { restaurant: restaurant });

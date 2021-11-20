@@ -1,3 +1,5 @@
+// Split route for general content
+
 const express = require('express');
 
 const router = express.Router();
