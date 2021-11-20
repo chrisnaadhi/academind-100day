@@ -1,12 +1,18 @@
-const fs = require("fs");
+// Dependencies
 const path = require("path");
+
 const express = require("express");
-const uuid = require("uuid");
+
+const defaultRoutes = require("./routes/default");
+const restaurantsRoutes = require("./routes/restaurants");
+
 const app = express();
 
+// Middleware for EJS Template
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// Middleware for Public and Style
 app.use(express.static("public"));
 app.use(
   express.urlencoded({
@@ -14,49 +20,18 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.render("index");
+// Middleware for routing to Routes folder
+app.use('/', defaultRoutes);
+app.use('/', restaurantsRoutes);
+
+// Middleware for 404 / 500 Pages
+app.use((req, res) => {
+  res.status(404).render("404");
 });
 
-app.get("/restaurants", (req, res) => {
-  const filePath = path.join(__dirname, "data", "restaurant.json");
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurant = JSON.parse(fileData);
-  res.render("restaurants", {
-    numberOfRestaurants: storedRestaurant.length,
-    restaurants: storedRestaurant,
-  });
+app.use((error, req, res, next) => {
+  res.status(500).render("500");
 });
 
-app.get("/restaurants/:id", (req, res) => {
-  const restaurantId = req.params.id;
-  res.render("restaurant-details", { rid: restaurantId });
-})
-
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-
-app.get("/recommend", (req, res) => {
-  res.render("recommend");
-});
-
-app.post("/recommend", (req, res) => {
-  const restaurant = req.body;
-  restaurant.id = uuid.v4();
-  const filePath = path.join(__dirname, "data", "restaurant.json");
-  
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurant = JSON.parse(fileData);
-
-  storedRestaurant.push(restaurant);
-  fs.writeFileSync(filePath, JSON.stringify(storedRestaurant));
-
-  res.redirect("/confirm");
-});
-
-app.get("/confirm", (req, res) => {
-  res.render("confirm");
-});
-
+// HTTP Ports Express
 app.listen(3000);
