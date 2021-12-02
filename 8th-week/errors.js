@@ -10,3 +10,6 @@ function readFile() {
 }
 
 readFile();
+
+let fileData = 'Hello World!';
+const fileData = 15;
