@@ -13,11 +13,11 @@ async function readFile() {
   //   });
 
   try {
-    fileData = await fs.readFile("data.txt")
+    fileData = await fs.readFile("data.txt");
   } catch (error) {
     console.log(error);
   }
-  
+
   console.log("File Parsing done!");
   console.log(fileData.toString());
 
