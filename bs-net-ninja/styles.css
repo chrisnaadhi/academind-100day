@@ -1,0 +1,12 @@
+section {
+  padding: 60px 0;
+}
+
+.nav-link {
+  border-bottom: 1px solid transparent;
+}
+
+.nav-link:hover {
+  font-weight: 500;
+  border-bottom: 1px solid green;
+}
