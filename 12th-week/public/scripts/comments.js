@@ -1,8 +1,11 @@
 const loadCommentsBtnElement = document.getElementById("load-comments-btn");
 
-async const fetchCommentsforPost = () => {
+async function fetchCommentsForPost() {
   const postId = loadCommentsBtnElement.dataset.postid;
   const response = await fetch(`/posts/${postId}/comments`);
-};
+  const responseData = await response.json();
 
-loadCommentsBtnElement.addEventListener("click", fetchCommentsforPost);
+  console.log(responseData);
+}
+
+loadCommentsBtnElement.addEventListener("click", fetchCommentsForPost);
